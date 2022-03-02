@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="operation"
+            type="com.dur4n.calculadorav2.data.model.Operacion" />
+        <variable
+            name="handler"
+            type="com.dur4n.calculadorav2.ui.operations.OperationsFragment"/>
+        <variable
+            name="presenter"
+            type="com.dur4n.calculadorav2.ui.operations.OperationsPresenter"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.operations.OperationsFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/guide_line" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/guide_line" />
+
+        <TextView
+            android:id="@+id/tvOperations"
+            android:layout_width="242dp"
+            android:layout_height="134dp"
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="@{operation.operacion}"
+            android:textSize="30dp"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnSiete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/btnCuatro"/>
+
+        <Button
+            android:id="@+id/btnMultiplicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x"
+            app:layout_constraintStart_toEndOf="@+id/btnResta"
+            app:layout_constraintTop_toBottomOf="@+id/btnNueve"/>
+
+        <Button
+            android:id="@+id/btnSuma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/btnSiete"/>
+
+        <Button
+            android:id="@+id/btnResta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            app:layout_constraintStart_toEndOf="@+id/btnSuma"
+            app:layout_constraintTop_toBottomOf="@+id/btnOcho"/>
+
+        <Button
+            android:id="@+id/btnResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="="
+            app:layout_constraintEnd_toStartOf="@+id/glRight"
+            app:layout_constraintHorizontal_bias="0.423"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/btnDivision"/>
+
+        <Button
+            android:id="@+id/btnOcho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8"
+            app:layout_constraintStart_toEndOf="@+id/btnSiete"
+            app:layout_constraintTop_toBottomOf="@+id/btnCinco" />
+
+        <Button
+            android:id="@+id/btnNueve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9"
+            app:layout_constraintStart_toEndOf="@+id/btnOcho"
+            app:layout_constraintTop_toBottomOf="@+id/btnSeis" />
+
+        <Button
+            android:id="@+id/btnCuatro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/btnUno" />
+
+        <Button
+            android:id="@+id/btnCinco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            app:layout_constraintStart_toEndOf="@+id/btnCuatro"
+            app:layout_constraintTop_toBottomOf="@+id/btnDos" />
+
+        <Button
+            android:id="@+id/btnSeis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            app:layout_constraintStart_toEndOf="@+id/btnCinco"
+            app:layout_constraintTop_toBottomOf="@+id/btnTres" />
+
+        <Button
+            android:id="@+id/btnUno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvOperations"
+            />
+
+        <Button
+            android:id="@+id/btnDos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            app:layout_constraintStart_toEndOf="@+id/btnUno"
+            app:layout_constraintTop_toBottomOf="@+id/tvOperations" />
+
+        <Button
+            android:id="@+id/btnTres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            app:layout_constraintStart_toEndOf="@+id/btnDos"
+            app:layout_constraintTop_toBottomOf="@+id/tvOperations"/>
+
+        <Button
+            android:id="@+id/btnDivision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            app:layout_constraintEnd_toStartOf="@+id/glRight"
+            app:layout_constraintHorizontal_bias="0.423"
+            app:layout_constraintStart_toStartOf="@+id/glLeft"
+            app:layout_constraintTop_toBottomOf="@+id/btnResta" />
+
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="58dp"
+            android:layout_height="131dp"
+            android:layout_marginStart="2dp"
+            android:text="Clear"
+            app:layout_constraintEnd_toStartOf="@+id/glRight"
+            app:layout_constraintStart_toEndOf="@+id/tvOperations"
+            tools:layout_editor_absoluteY="32dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
