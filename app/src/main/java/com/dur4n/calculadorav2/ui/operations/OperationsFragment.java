@@ -2,10 +2,15 @@ package com.dur4n.calculadorav2.ui.operations;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -24,6 +29,7 @@ public class OperationsFragment extends Fragment implements OperationsContract.V
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         presenter = new OperationsPresenter(this);
     }
 
@@ -45,6 +51,26 @@ public class OperationsFragment extends Fragment implements OperationsContract.V
         initBtn();
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_operations, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.mi_operationsList:
+                navigateOperationsList();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void navigateOperationsList() {
+        OperationsFragmentDirections.actionOperationsFragmentToOperationsListFragment();
+        NavHostFragment.findNavController(OperationsFragment.this).navigate(R.id.action_operationsFragment_to_operationsListFragment);
     }
 
     private void initBtn() {
@@ -189,6 +215,5 @@ public class OperationsFragment extends Fragment implements OperationsContract.V
     public void onFailure(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
-
 
 }
